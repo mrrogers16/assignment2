@@ -20,3 +20,12 @@
 #
 # Comments should be left alone. You may assume comments (single- and
 # multi-line) will not appear on lines with source code.
+
+if [ $@ < 1 ]; then
+    echo "Usage: ./assignment1 source_file"
+fi
+
+for file in $@
+do
+    sed -E -f firstStep.sed inputProgram.c > testProgram.c
+done

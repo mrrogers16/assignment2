@@ -25,8 +25,12 @@ s/\s+$//g
 s/(\S)\s{2,}(\S)/\1 \2/g
 
 # Condidtions should not have whitespace immediately inside of the parentheses.
-s/\(\s/(/g
-s/\s\)/\)/g
+
+s/\( */\(/g
+s/ *\)/\)/g
+
+#s/\(\s/(/g
+#s/\s\)/\)/g
 
 # Binary operators should always surrounded by a single space on
 # either side (including assignment and Boolean).
@@ -75,5 +79,4 @@ s/ *<= */ <= /g
 s/ *>= */ >= /g
 
 #Handle == operator
-
 s/ *== */ == /g

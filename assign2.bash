@@ -24,3 +24,4 @@
 
 
 sed -E -f assignment2.sed "$@"
+

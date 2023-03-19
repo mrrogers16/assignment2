@@ -7,10 +7,10 @@
 /\/\//p
 /\/\//d
 
-# No trailing whitespace after a line
+# Remove trailing whitespace after a line
 s/\s+$//g
 
-# Multiline comments
+# Print and delete multiline comments
 /\/\*/,/\*\//p
 /\/\*/,/\*\//d
 
@@ -18,7 +18,7 @@ s/\s+$//g
 /^#/p
 /^#/d
 
-# No trailing whitespace after a line
+# Remove trailing whitespace after a line
 s/\s+$//g
 
 # No more than one space between tokens
@@ -32,6 +32,10 @@ s/\s\)/\)/g
 # either side (including assignment and Boolean).
 # Only the following operators must be accounted for:
 # +, -, *, /, =, ==, <=, >=, <, >.
+
+# Handle = operator
+
+s/ *= */ = /g
 
 # Handle / operator
 
@@ -49,16 +53,18 @@ s/ *< */ < /g
 
 s/ *> */ > /g
 
-#Reset double binary
-s/> =/>=/g
-s/< =/<=/g
-
 #Handle + operator
 s/ *\+ */ \+ /g
 
 #Handle - operator
 
 s/ *\- */ \- /g
+
+#Reset double binary
+s/> =/>=/g
+s/< =/<=/g
+s/= *=/==/g
+
 
 #Handle <= operator
 

@@ -3,25 +3,71 @@
 # CS 3424 Systems Programming
 # Assignment 1, Spring 2023
 
-# No more than one space between tokens
-#
+# Print and then delete all single line comments
+/\/\//p
+/\/\//d
+
 # No trailing whitespace after a line
-#
+s/\s+$//g
+
+# Multiline comments
+/\/\*/,/\*\//p
+/\/\*/,/\*\//d
+
+# Print and delete import statements
+/^#/p
+/^#/d
+
+# No trailing whitespace after a line
+s/\s+$//g
+
+# No more than one space between tokens
+s/(\S)\s{2,}(\S)/\1 \2/g
+
+# Condidtions should not have whitespace immediately inside of the parentheses.
+s/\(\s/(/g
+s/\s\)/\)/g
+
 # Binary operators should always surrounded by a single space on
 # either side (including assignment and Boolean).
-#
 # Only the following operators must be accounted for:
 # +, -, *, /, =, ==, <=, >=, <, >.
-#
-# Conditions should not have whitespace immediately inside of the
-# parentheses.
-#
-# The program should not modify spaces which are leading, expanded tabs.
-#
-# Comments should be left alone. You may assume comments (single- and
-# multi-line) will not appear on lines with source code.
 
-s/\(/\( /g;
+# Handle / operator
 
-s/\)/\ )/g;
+s/ *\/ */ \/ /g
 
+# Handle * operator
+
+s/ *\* */ \* /g
+
+# Handle < operator
+
+s/ *< */ < /g
+
+#Handle > operator
+
+s/ *> */ > /g
+
+#Reset double binary
+s/> =/>=/g
+s/< =/<=/g
+
+#Handle + operator
+s/ *\+ */ \+ /g
+
+#Handle - operator
+
+s/ *\- */ \- /g
+
+#Handle <= operator
+
+s/ *<= */ <= /g
+
+#Handle >= operator
+
+s/ *>= */ >= /g
+
+#Handle == operator
+
+s/ *== */ == /g

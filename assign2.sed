@@ -24,7 +24,7 @@ s/\s+$//g
 # No more than one space between tokens
 s/(\S)\s{2,}(\S)/\1 \2/g
 
-# Condidtions should not have whitespace immediately inside of the parentheses.
+# Conditions should not have whitespace immediately inside of the parentheses.
 
 s/\( */\(/g
 s/ *\)/\)/g
